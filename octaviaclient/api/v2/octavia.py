@@ -223,6 +223,20 @@ class OctaviaAPI(api.BaseAPI):
         return response
 
     @correct_return_codes
+    def load_balancer_scaleout(self, lb_id):
+        """Trigger load balancer scaleout
+
+        :param string lb_id:
+            ID of the load balancer to scaleout
+        :return:
+            Response Code from the API
+        """
+        url = const.BASE_LOADBALANCER_SCALEOUT_URL.format(uuid=lb_id)
+        response = self._create(url, method='PUT')
+
+        return response
+
+    @correct_return_codes
     def listener_list(self, **kwargs):
         """List all listeners
 
